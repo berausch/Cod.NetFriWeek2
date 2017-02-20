@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css" />
     <link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body> 
     <div class="container">
         <div class="jumbotron">
             <div class="row">
@@ -32,6 +32,7 @@
                         <br />
                         <br />
                         <br />
+
                         <div class="log">
                             <h5>Signed in as: </h5>
                             <h5>@User.Identity.Name</h5>
@@ -40,32 +41,17 @@
                             {
                                 <input type="submit" value="Log out" />
                             }
+
                         </div>
                     }
-                    else
-                    {
-                                                 <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                        <div class="log log2">
-                            <p>@Html.ActionLink("Admin Log In", "Login")</p>
-                            </div>
-                     }
-                 </div>
+                </div>
             </div>
         </div>
+
         <div class="home-stuff">
             @RenderBody()
         </div>
     </div>
 </body>
+
 </html>

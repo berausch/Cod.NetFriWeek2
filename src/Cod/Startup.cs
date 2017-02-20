@@ -45,6 +45,7 @@ namespace Cod
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseStaticFiles();
 
             app.UseIdentity();
             app.UseMvc(routes =>

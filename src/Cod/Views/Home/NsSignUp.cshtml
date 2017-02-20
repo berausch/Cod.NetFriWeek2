@@ -4,6 +4,8 @@
 }
 @model Cod.Models.Newsletter
 
+@using System.Security.Claims
+
 <h2>Sign up for our Newsletter!</h2>
 <hr />
 @using (Html.BeginForm())
@@ -15,4 +17,10 @@
     @Html.TextBoxFor(m => m.Email)
 
     <input type="submit" value="Log in" class="btn btn-default" />
+}
+@if(User.Identity.IsAuthenticated)
+{
+    <h4>Admin Only</h4>
+<hr/>
+    <p>@Html.ActionLink("Current Mailing List", "MailingList", "Account")</p>
 }
