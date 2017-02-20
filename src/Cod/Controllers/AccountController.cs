@@ -62,6 +62,11 @@ namespace Cod.Controllers
             return RedirectToAction("Index", "Home");
 
         }
+
+        public IActionResult MailingList()
+        {
+            return View(_db.Newsletters);
+        }
     }
 
 }

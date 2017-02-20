@@ -20,7 +20,8 @@
 }
 @if(User.Identity.IsAuthenticated)
 {
-    <h4>Admin Only</h4>
+    <hr/>
+    <h3>Admin Only</h3>
 <hr/>
-    <p>@Html.ActionLink("Current Mailing List", "MailingList", "Account")</p>
+    <h4>@Html.ActionLink("Current Mailing List", "MailingList", "Account")</h4>
 }

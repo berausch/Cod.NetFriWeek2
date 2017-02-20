@@ -14,7 +14,6 @@ namespace Cod.Models
         public int NewsletterId { get; set; }
         public string Name { get; set; }
 
-        [EmailAddress]
         public string Email { get; set; }
     }
 }

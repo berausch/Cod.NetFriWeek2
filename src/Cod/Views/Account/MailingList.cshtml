@@ -1,5 +1,15 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Mailing List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model IEnumerable<Cod.Models.Newsletter>
+
+@if(Model.Any())
+{
+    <h3>Mailing List</h3>
+        @foreach(var listItem in Model)
+        {
+            <h4>@Html.DisplayFor(m=> listItem.Name) | @Html.DisplayFor(m => listItem.Email) </h4>
+
+        }
+ }
