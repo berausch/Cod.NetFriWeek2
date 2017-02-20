@@ -47,5 +47,25 @@ namespace Cod.Controllers
                 return View();
             }
         }
+
+        public IActionResult NsSignUp()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult NsSignUp(Newsletter newsletter)
+        {
+            _db.Newsletters.Add(newsletter);
+            _db.SaveChanges();
+            return RedirectToAction("NewsletterConfirm", new { id = newsletter.NewsletterId });
+
+        }
+
+
+        public IActionResult NewsletterConfirm(int id)
+        {
+            var thisSignUp = _db.Newsletters.FirstOrDefault(n => n.NewsletterId == id);
+            return View(thisSignUp);
+        }
     }
 }

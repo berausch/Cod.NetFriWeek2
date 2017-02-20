@@ -13,6 +13,8 @@ namespace Cod.Models
         [Key]
         public int NewsletterId { get; set; }
         public string Name { get; set; }
+
+        [EmailAddress]
         public string Email { get; set; }
     }
 }
