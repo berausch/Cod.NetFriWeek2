@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Cod.Controllers
 {
     
-    [Authorize]
+    
     public class AccountController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -27,16 +27,17 @@ namespace Cod.Controllers
             _signInManager = signInManager;
             _db = db;
         }
+        [Authorize]
         public IActionResult Index()
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Register()
         {
             return View();
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -62,10 +63,30 @@ namespace Cod.Controllers
             return RedirectToAction("Index", "Home");
 
         }
-
+        [Authorize]
         public IActionResult MailingList()
         {
             return View(_db.Newsletters);
+        }
+
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Account");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 
