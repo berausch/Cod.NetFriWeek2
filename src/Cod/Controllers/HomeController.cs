@@ -13,17 +13,8 @@ namespace Cod.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-
-        public HomeController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext db)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _db = db;
-        }
         public IActionResult Index()
         {
             return View();
@@ -37,16 +28,21 @@ namespace Cod.Controllers
         [HttpPost]
         public IActionResult NsSignUp(Newsletter newsletter)
         {
-            _db.Newsletters.Add(newsletter);
-            _db.SaveChanges();
+            db.Newsletters.Add(newsletter);
+            db.SaveChanges();
             return RedirectToAction("NewsletterConfirm", new { id = newsletter.NewsletterId });
 
         }
 
+        public IActionResult NewsletterConfirm()
+        {
+           
+            return View();
+        }
 
         public IActionResult NewsletterConfirm(int id)
         {
-            var thisSignUp = _db.Newsletters.FirstOrDefault(n => n.NewsletterId == id);
+            var thisSignUp = db.Newsletters.FirstOrDefault(n => n.NewsletterId == id);
             return View(thisSignUp);
         }
     }
