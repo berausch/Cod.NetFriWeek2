@@ -34,12 +34,6 @@ namespace Cod.Controllers
 
         }
 
-        public IActionResult NewsletterConfirm()
-        {
-           
-            return View();
-        }
-
         public IActionResult NewsletterConfirm(int id)
         {
             var thisSignUp = db.Newsletters.FirstOrDefault(n => n.NewsletterId == id);

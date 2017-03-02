@@ -14,6 +14,12 @@ namespace Cod.Models
         {
 
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Cod;integrated security=True");
+        }
+
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
